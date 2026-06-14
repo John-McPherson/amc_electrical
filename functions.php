@@ -3,15 +3,13 @@
 // register all amc blocks
 add_action('init', function () {
 
-    foreach (glob(get_theme_file_path('build/blocks/*')) as $block_dir) {
+    foreach (glob(get_stylesheet_directory() . '/build/blocks/*') as $block_dir) {
 
         if (file_exists($block_dir . '/block.json')) {
             register_block_type($block_dir);
         }
     }
-
 });
-
 // only allow amc blocks
 add_filter('allowed_block_types_all', function ($allowed_blocks, $editor_context) {
 
@@ -26,5 +24,4 @@ add_filter('allowed_block_types_all', function ($allowed_blocks, $editor_context
     }
 
     return $allowed;
-
 }, 10, 2);

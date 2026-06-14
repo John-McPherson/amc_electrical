@@ -1,7 +1,65 @@
 .amc-hero {
-	display: grid;
-	background-color: var(--wp--preset--color--primary);
-	img{
-		width: 100%;
-	}
+  --gradiant-direction: 180deg;
+
+  display: grid;
+
+  background-color: var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--secondary);
+
+  grid-template-columns: 1fr;
+
+  .hero-text {
+    margin: auto 0 auto auto;
+    max-width: 420px;
+    padding: 36px; //todo set var
+    // padding-right: 20px;
+  }
+
+  .hero-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-image: var(--background-image);
+      background-position: center;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+
+      background: linear-gradient(
+        var(--gradiant-direction),
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0) 42%
+      );
+    }
+  }
+  img {
+    width: 100%;
+
+    position: relative;
+  }
+  @media (min-width: 600px) {
+    --gradiant-direction: 90deg;
+
+    grid-template-columns: repeat(2, 1fr);
+    .hero-img {
+      aspect-ratio: unset;
+    }
+  }
+  // --wp--custom--breakpoints--sm
 }

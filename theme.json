@@ -2,23 +2,28 @@
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 3,
   "settings": {
+    "layout": {
+      "wideSize": "1000px",
+      "contentSize": "840px"
+    },
+    "custom": {
+      "breakpoints": {
+        "sm": "700px"
+      }
+    },
     "color": {
       "palette": [
         {
           "slug": "primary",
           "name": "Primary",
           "color": "#0073aa"
+        },
+        {
+          "slug": "secondary",
+          "name": "Secondary",
+          "color": "#ffffff"
         }
       ]
-    },
-    "typography": {
-      "fluid": true
-    }
-  },
-  "styles": {
-    "color": {
-      "background": "#ffffff",
-      "text": "#222222"
     }
   }
 }
