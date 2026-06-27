@@ -1,11 +1,12 @@
 {
-  "name": "amc_electrical",
+  "name": "jm_custom_theme",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"wp-scripts start\" \"sass --watch src/scss/style.scss:build/style.css\"",
-    "build": "wp-scripts build && sass src/scss/style.scss:build/style.css --no-source-map --style=compressed"
+    "build": "wp-scripts build && sass src/scss/style.scss:build/style.css --no-source-map --style=compressed",
+    "package": "rm -rf dist && mkdir -p dist && rsync -av --delete --exclude='src' --exclude='node_modules' --exclude='.git' --exclude='dist' --exclude='tsconfig.json' --exclude='.gitignore' --exclude='package.json' --exclude='package-lock.json' ./ dist/"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,12 @@
   "bugs": {
     "url": "https://github.com/John-McPherson/amc_electrical/issues"
   },
-  "homepage": "https://github.com/John-McPherson/amc_electrical#readme",
+  "homepage": "https://github.com/John-McPherson/jm_custom_theme#readme",
   "devDependencies": {
+    "@wordpress/block-editor": "^15.22.0",
+    "@wordpress/blocks": "^15.22.0",
+    "@wordpress/element": "^8.1.0",
+    "@wordpress/i18n": "^6.22.0",
     "@wordpress/scripts": "^32.4.0",
     "concurrently": "^10.0.3",
     "sass": "^1.101.0"

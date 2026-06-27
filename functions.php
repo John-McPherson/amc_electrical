@@ -1,10 +1,10 @@
 <?php
 
 wp_enqueue_style(
-    'my-theme',
-    get_theme_file_uri('/build/style.css'),
-    [],
-    filemtime(get_theme_file_path('/build/style.css'))
+    handle: 'jm-theme',
+    src: get_theme_file_uri('/build/style.css'),
+    deps: [],
+    ver: filemtime(get_theme_file_path('/style.css'))
 );
 
 // register all theme blocks
