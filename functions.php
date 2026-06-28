@@ -7,6 +7,9 @@ wp_enqueue_style(
     ver: filemtime(get_theme_file_path('/build/css/style.css'))
 );
 
+add_theme_support('editor-styles');
+add_editor_style('build/css/editor-style.css');
+
 // register all theme blocks
 add_action('init', function () {
 

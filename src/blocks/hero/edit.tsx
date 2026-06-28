@@ -30,5 +30,21 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 export default function Edit() {
-  return <div {...useBlockProps()}>{__("Hello", "hero")}</div>;
+  const banner = (
+    <section className="jm-section jm-hero">
+      <div className="hero-text">
+        <h1 className="jm-hero__title">{"Site heading to go here2"}</h1>
+        <p className="jm-hero__description">
+          {
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor."
+          }
+        </p>
+      </div>
+      <div className="hero-img">
+        <img src="https://placehold.net/800x600.png" alt="Placeholder image" />
+      </div>
+    </section>
+  );
+
+  return <div {...useBlockProps()}>{banner}</div>;
 }

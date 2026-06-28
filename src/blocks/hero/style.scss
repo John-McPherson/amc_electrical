@@ -12,9 +12,8 @@
 
   .hero-text {
     margin: auto 0 auto auto;
-    max-width: 420px;
-    padding: 36px; //todo set var
-    // padding-right: 20px;
+    max-width: 420px; // todo set max-width to a variable
+    padding: 36px; //todo set padding to a variable
   }
 
   .hero-img {
@@ -63,5 +62,4 @@
       aspect-ratio: unset;
     }
   }
-  // --wp--custom--breakpoints--sm
 }
