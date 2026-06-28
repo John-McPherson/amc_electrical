@@ -31,14 +31,14 @@ export default function Edit({ attributes, setAttributes }) {
           allowFormats={[]}
           value={heading}
           onChange={(value: string) => setAttributes({ heading: value })}
-          placeholder={__("heading to go here (required)", "jm-theme")}
+          placeholder={__("heading to go here (required)", "hero")}
         />
         <RichText
           tagName="p"
           allowFormats={[]}
           value={text}
           onChange={(value: string) => setAttributes({ text: value })}
-          placeholder={__("Enter text here", "jm-theme")}
+          placeholder={__("Enter text here", "hero")}
         />
       </div>
       <div
@@ -63,8 +63,8 @@ export default function Edit({ attributes, setAttributes }) {
             render={({ open }) => (
               <Button variant="primary" onClick={open}>
                 {imageId
-                  ? __("Replace Image", "jm-theme")
-                  : __("Select Image", "jm-theme")}
+                  ? __("Replace Image", "hero")
+                  : __("Select Image", "hero")}
               </Button>
             )}
           />
