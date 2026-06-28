@@ -9,8 +9,6 @@ import {
 
 import { Button } from "@wordpress/components";
 
-import { useSelect } from "@wordpress/data";
-
 import "./editor.scss";
 
 /**
@@ -33,20 +31,22 @@ export default function Edit({ attributes, setAttributes }) {
           allowFormats={[]}
           value={heading}
           onChange={(value: string) => setAttributes({ heading: value })}
-          placeholder={__("heading to go here", "jm-theme")}
-        ></RichText>
+          placeholder={__("heading to go here (required)", "jm-theme")}
+        />
         <RichText
           tagName="p"
           allowFormats={[]}
           value={text}
           onChange={(value: string) => setAttributes({ text: value })}
           placeholder={__("Enter text here", "jm-theme")}
-        ></RichText>
+        />
       </div>
       <div
         className="hero-img"
         style={
-          { "--background-image": `url(${imageUrl})` } as React.CSSProperties
+          {
+            "--background-image": imageUrl ? `url(${imageUrl})` : "none",
+          } as React.CSSProperties
         }
       >
         <MediaUploadCheck>
@@ -62,7 +62,9 @@ export default function Edit({ attributes, setAttributes }) {
             allowedTypes={["image"]}
             render={({ open }) => (
               <Button variant="primary" onClick={open}>
-                {__("Upload Image", "jm-theme")}
+                {imageId
+                  ? __("Replace Image", "jm-theme")
+                  : __("Select Image", "jm-theme")}
               </Button>
             )}
           />
