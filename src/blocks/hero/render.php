@@ -16,13 +16,25 @@ $background_style = $background_image_url
 
 <section class="jm-section jm-hero">
     <div class="hero-text">
-        <?php if ($heading) : ?>
-            <h1><?php echo esc_html($heading); ?></h1>
-        <?php endif; ?>
+        <?php get_template_part(
+            slug: 'template-parts/h1',
+            name: null,
+            args: [
+                'text'    => $heading,
+                'classes' => 'heading',
+            ]
+        );
+        ?>
 
-        <?php if ($text) : ?>
-            <p><?php echo esc_html($text); ?></p>
-        <?php endif; ?>
+        <?php
+        get_template_part(
+            slug: 'template-parts/paragraph',
+            name: null,
+            args: [
+                'text'    => $text,
+                'classes' => 'text',
+            ]
+        ); ?>
     </div>
     <div class="hero-img" style="<?php echo esc_attr($background_style); ?>">
 

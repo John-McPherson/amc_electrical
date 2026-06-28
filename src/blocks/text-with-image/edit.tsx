@@ -3,28 +3,110 @@ import { __ } from "@wordpress/i18n";
 import {
   useBlockProps,
   RichText,
-  MediaUpload,
-  MediaUploadCheck,
+  LinkControl,
+  BlockControls,
 } from "@wordpress/block-editor";
 
-import { Button } from "@wordpress/components";
+import { Popover, ToolbarButton } from "@wordpress/components";
+
+import { link as linkIcon } from "@wordpress/icons";
 
 import "./editor.scss";
+import { useRef, useState } from "react";
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
 export default function Edit({ attributes, setAttributes }) {
-  const { heading, subheading, text, imageId, imageUrl } = attributes;
-  console.log("imageId", imageId);
-  const textWithImage = (
-    <section className="jm-section jm-text-with-image">{"hello"}</section>
+  const { label, heading, text, link, linkText, imageId, imageUrl } =
+    attributes;
+
+  const [isLinkOpen, setIsLinkOpen] = useState(false);
+  const linkButtonRef = useRef(null);
+
+  const linkPopover = isLinkOpen && (
+    <Popover
+      anchorRef={linkButtonRef.current}
+      onClose={() => setIsLinkOpen(false)}
+    >
+      <div style={{ minWidth: 300, padding: 12 }}>
+        <LinkControl
+          value={link}
+          onChange={(value) =>
+            setAttributes({
+              link: {
+                ...link,
+                ...value,
+              },
+            })
+          }
+          onRemove={() => {
+            setAttributes({
+              link: {
+                url: "",
+                opensInNewTab: false,
+              },
+            });
+            setIsLinkOpen(false);
+          }}
+        />
+      </div>
+    </Popover>
   );
 
-  return <div {...useBlockProps()}>{textWithImage}</div>;
+  return (
+    <div {...useBlockProps()}>
+      <BlockControls>
+        <ToolbarButton
+          ref={linkButtonRef}
+          icon={linkIcon}
+          label={__("Edit link", "jm-theme")}
+          isPressed={isLinkOpen}
+          onClick={() => setIsLinkOpen((open) => !open)}
+        />
+      </BlockControls>
+
+      <section className="jm-section jm-text-with-image">
+        <div className="column">
+          <RichText
+            tagName="p"
+            className="label"
+            allowedFormats={[]}
+            value={label}
+            onChange={(value) => setAttributes({ label: value })}
+            placeholder={__("Label to go here", "jm-theme")}
+          />
+
+          <div className="text-content">
+            <RichText
+              tagName="h2"
+              allowedFormats={[]}
+              value={heading}
+              onChange={(value) => setAttributes({ heading: value })}
+              placeholder={__("Heading to go here", "jm-theme")}
+            />
+
+            <RichText
+              tagName="p"
+              allowedFormats={[]}
+              value={text}
+              onChange={(value) => setAttributes({ text: value })}
+              placeholder={__("Text to go here", "jm-theme")}
+            />
+          </div>
+
+          <RichText
+            tagName="a"
+            className="jm-button"
+            value={linkText}
+            allowedFormats={[]}
+            placeholder={__("Button text", "jm-theme")}
+            onChange={(value) => setAttributes({ linkText: value })}
+            withoutInteractiveFormatting
+          />
+        </div>
+
+        <div className="column">{/* Image goes here */}</div>
+      </section>
+
+      {linkPopover}
+    </div>
+  );
 }

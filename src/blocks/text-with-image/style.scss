@@ -1,1 +1,27 @@
 @use "../../scss/abstracts/index" as *;
+
+.jm-text-with-image {
+  display: grid;
+  background-color: var(--jm-primary-color);
+  color: var(--jm-secondary-color);
+  justify-items: center;
+
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  padding: 36px; //todo set padding to a variable
+  gap: 36px; //todo set gap to a variable
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px; //todo set gap to a variable
+    width: 100%;
+    max-width: 480px; //todo set as var
+  }
+
+  @include jm_button();
+
+  img {
+    border-radius: 8px;
+  }
+}
