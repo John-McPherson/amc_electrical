@@ -7,7 +7,7 @@ type MediaInputTypes = "image" | "video" | "audio";
 type MediaInputProps = {
   value: string | number | null;
   type?: MediaInputTypes;
-  onSelect: (media: { id: number; url: string }) => void;
+  set: (media: { id: number; url: string }) => void;
   className?: string;
 };
 
@@ -29,13 +29,13 @@ const labels = {
 const MediaInput = ({
   value,
   type = "image",
-  onSelect,
+  set,
   className = "",
 }: MediaInputProps) => {
   return (
     <MediaUploadCheck>
       <MediaUpload
-        onSelect={onSelect}
+        onSelect={set}
         type={type}
         allowedTypes={[type]}
         className={className}

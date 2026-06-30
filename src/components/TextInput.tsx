@@ -5,7 +5,7 @@ type TextTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "a" | "span";
 
 type TextInputProps = {
   value: string;
-  onChange: (value: string) => void;
+  set: (value: string) => void;
   tagName?: TextTag;
   placeholder?: string;
   className?: string;
@@ -13,7 +13,7 @@ type TextInputProps = {
 
 const TextInput = ({
   value,
-  onChange,
+  set,
   tagName = "p",
   placeholder,
   className = "",
@@ -23,7 +23,7 @@ const TextInput = ({
       tagName={tagName}
       allowedFormats={[]}
       value={value}
-      onChange={onChange}
+      onChange={set}
       placeholder={placeholder ?? __("Enter text here", "jm-theme")}
       className={className}
     />

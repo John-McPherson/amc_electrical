@@ -1,18 +1,14 @@
 <?php
 
-//todo add image controls + allow for reading order to be resolved + pallete controls
+//todo  allow for reading order to be reversed + pallete controls
 
-$heading = $attributes['heading'] ?? '';
-$label   = $attributes['label'] ?? '';
-$text    = $attributes['text'] ?? '';
 
-$link       = $attributes['link'] ?? [];
-$link_text  = $attributes['linkText'] ?? '';
-
-$button_args = [
-    'text'    => $link_text,
-    'url'     => $link['url'] ?? '',
-    'classes' => '',
+$args = [
+    'label'   => ['text' => $attributes['label'] ?? '', 'classes' => 'label'],
+    'heading' => ['text' => $attributes['heading'] ?? '', 'classes' => 'heading'],
+    'text'    => ['text' => $attributes['text'] ?? '', 'classes' => 'text'],
+    'button'  => ['text' => $attributes['linkText'] ?? '', 'url' => $attributes['link']['url'] ?? ''],
+    'image'   => ['image_id' => !empty($attributes['imageId']) ? (int) $attributes['imageId'] : 0],
 ];
 
 ?>
@@ -20,50 +16,24 @@ $button_args = [
 <section class="jm-section jm-text-with-image">
     <div class="column">
 
-        <?php
-        get_template_part(
-            slug: 'template-parts/paragraph',
-            name: null,
-            args: [
-                'text'    => $label,
-                'classes' => 'label',
-            ]
-        );
-        ?>
+        <?php get_template_part(slug: 'template-parts/paragraph', name: null, args: $args['label']); ?>
 
         <div class="text-content">
 
             <?php
-            get_template_part(
-                slug: 'template-parts/h2',
-                name: null,
-                args: [
-                    'text'    => $heading,
-                    'classes' => 'heading',
-                ]
-            );
-            ?>
-
-            <?php
-            get_template_part(
-                slug: 'template-parts/paragraph',
-                name: null,
-                args: [
-                    'text'    => $text,
-                    'classes' => 'text',
-                ]
-            );
+            get_template_part(slug: 'template-parts/h2', name: null, args: $args['heading']);
+            get_template_part(slug: 'template-parts/paragraph', name: null, args: $args['text']);
             ?>
 
         </div>
 
-        <?php get_template_part('template-parts/button', 'link', $button_args); ?>
+        <?php get_template_part(slug: 'template-parts/button', name: 'link',  args: $args['button']); ?>
 
     </div>
 
     <div class="column">
-        <img
-            src="https://placehold.co/600x400"
-            alt="Image description" />
+        <?php
+        get_template_part(slug: 'template-parts/image', name: null, args: $args['image']);
+        ?>
     </div>
 </section>

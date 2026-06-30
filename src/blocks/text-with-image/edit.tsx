@@ -1,112 +1,40 @@
 import { __ } from "@wordpress/i18n";
 
-import {
-  useBlockProps,
-  RichText,
-  LinkControl,
-  BlockControls,
-} from "@wordpress/block-editor";
-
-import { Popover, ToolbarButton } from "@wordpress/components";
-
-import { link as linkIcon } from "@wordpress/icons";
+import { useBlockProps } from "@wordpress/block-editor";
 
 import "./editor.scss";
-import { useRef, useState } from "react";
+
+import TextInput from "../../components/TextInput";
+import bindFields from "../../utils/bindFields";
+import ButtonLink from "../../components/ButtonLink";
+import MediaInput from "../../components/MediaInput";
 
 export default function Edit({ attributes, setAttributes }) {
-  const { label, heading, text, link, linkText, imageId, imageUrl } =
-    attributes;
-
-  const [isLinkOpen, setIsLinkOpen] = useState(false);
-  const linkButtonRef = useRef(null);
-
-  const linkPopover = isLinkOpen && (
-    <Popover
-      anchorRef={linkButtonRef.current}
-      onClose={() => setIsLinkOpen(false)}
-    >
-      <div style={{ minWidth: 300, padding: 12 }}>
-        <LinkControl
-          value={link}
-          onChange={(value) =>
-            setAttributes({
-              link: {
-                ...link,
-                ...value,
-              },
-            })
-          }
-          onRemove={() => {
-            setAttributes({
-              link: {
-                url: "",
-                opensInNewTab: false,
-              },
-            });
-            setIsLinkOpen(false);
-          }}
-        />
-      </div>
-    </Popover>
-  );
+  const bind = bindFields(attributes, setAttributes);
+  const { imageUrl } = attributes;
+  const blockProps = useBlockProps();
 
   return (
-    <div {...useBlockProps()}>
-      <BlockControls>
-        <ToolbarButton
-          ref={linkButtonRef}
-          icon={linkIcon}
-          label={__("Edit link", "jm-theme")}
-          isPressed={isLinkOpen}
-          onClick={() => setIsLinkOpen((open) => !open)}
-        />
-      </BlockControls>
-
+    <div {...blockProps}>
       <section className="jm-section jm-text-with-image">
         <div className="column">
-          <RichText
-            tagName="p"
-            className="label"
-            allowedFormats={[]}
-            value={label}
-            onChange={(value) => setAttributes({ label: value })}
-            placeholder={__("Label to go here", "jm-theme")}
-          />
+          <TextInput {...bind.text("label")} tagName="p" className="label" />
 
           <div className="text-content">
-            <RichText
-              tagName="h2"
-              allowedFormats={[]}
-              value={heading}
-              onChange={(value) => setAttributes({ heading: value })}
-              placeholder={__("Heading to go here", "jm-theme")}
-            />
-
-            <RichText
-              tagName="p"
-              allowedFormats={[]}
-              value={text}
-              onChange={(value) => setAttributes({ text: value })}
-              placeholder={__("Text to go here", "jm-theme")}
-            />
+            <TextInput {...bind.text("heading")} tagName="h2" />
+            <TextInput {...bind.text("text")} />
           </div>
 
-          <RichText
-            tagName="a"
-            className="jm-button"
-            value={linkText}
-            allowedFormats={[]}
-            placeholder={__("Button text", "jm-theme")}
-            onChange={(value) => setAttributes({ linkText: value })}
-            withoutInteractiveFormatting
-          />
+          <ButtonLink text={bind.text("linkText")} link={bind.link("link")} />
         </div>
 
-        <div className="column">{/* Image goes here */}</div>
+        <div className="column">
+          <div className="jm-image">
+            {imageUrl && <img src={imageUrl} />}
+            <MediaInput {...bind.media("imageId", "imageUrl")} />
+          </div>
+        </div>
       </section>
-
-      {linkPopover}
     </div>
   );
 }
