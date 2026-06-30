@@ -1,5 +1,7 @@
 <?php
 
+$args = $args ?? [];
+
 $image_id = (int) $args['image_id'] ?? 0;
 $classes = $args['classes'] ?? '';
 

@@ -21,7 +21,7 @@ $args = [
         <div class="text-content">
 
             <?php
-            get_template_part(slug: 'template-parts/h2', name: null, args: $args['heading']);
+            get_template_part(slug: 'template-parts/heading', name: null, args: $args['heading']);
             get_template_part(slug: 'template-parts/paragraph', name: null, args: $args['text']);
             ?>
 

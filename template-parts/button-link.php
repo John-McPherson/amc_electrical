@@ -1,4 +1,6 @@
 <?php
+$args = $args ?? [];
+
 $url     = $args['url'] ?? '';
 $text    = $args['text'] ?? '';
 $classes = $args['classes'] ?? '';

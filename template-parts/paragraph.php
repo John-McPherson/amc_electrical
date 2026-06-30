@@ -1,4 +1,5 @@
 <?php
+$args = $args ?? [];
 $text = $args['text'] ?? '';
 $classes = $args['classes'] ?? '';
 

@@ -17,11 +17,12 @@ $background_style = $background_image_url
 <section class="jm-section jm-hero">
     <div class="hero-text">
         <?php get_template_part(
-            slug: 'template-parts/h1',
+            slug: 'template-parts/heading',
             name: null,
             args: [
                 'text'    => $heading,
                 'classes' => 'heading',
+                'level' => '1',
             ]
         );
         ?>
