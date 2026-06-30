@@ -2,7 +2,6 @@ import { __ } from "@wordpress/i18n";
 
 import {
   useBlockProps,
-  RichText,
   MediaUpload,
   MediaUploadCheck,
 } from "@wordpress/block-editor";
@@ -10,6 +9,8 @@ import {
 import { Button } from "@wordpress/components";
 
 import "./editor.scss";
+import TextInput from "../../components/TextInput";
+import { bindAttribute } from "../../utils/bindAttribute";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -20,26 +21,15 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-  const { heading, text, imageId, imageUrl } = attributes;
-  console.log("imageId", imageId);
+  const { imageId, imageUrl } = attributes;
+
+  const bind = bindAttribute(attributes, setAttributes);
 
   const banner = (
     <section className="jm-section jm-hero">
       <div className="hero-text">
-        <RichText
-          tagName="h1"
-          allowFormats={[]}
-          value={heading}
-          onChange={(value: string) => setAttributes({ heading: value })}
-          placeholder={__("heading to go here (required)", "hero")}
-        />
-        <RichText
-          tagName="p"
-          allowFormats={[]}
-          value={text}
-          onChange={(value: string) => setAttributes({ text: value })}
-          placeholder={__("Enter text here", "hero")}
-        />
+        <TextInput {...bind("heading")} tagName="h1" />
+        <TextInput {...bind("text")} />
       </div>
       <div
         className="hero-img"
@@ -52,7 +42,6 @@ export default function Edit({ attributes, setAttributes }) {
         <MediaUploadCheck>
           <MediaUpload
             onSelect={(image: { id: number; url: string }) => {
-              console.log("image", image);
               setAttributes({
                 imageId: image.id,
                 imageUrl: image.url,
