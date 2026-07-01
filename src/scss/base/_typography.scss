@@ -1,0 +1,171 @@
+// Display
+@mixin d1 {
+  font-size: var(--jm-d1);
+  line-height: 1.1;
+}
+
+@mixin d2 {
+  font-size: var(--jm-d2);
+  line-height: 1.1;
+}
+
+@mixin d3 {
+  font-size: var(--jm-d3);
+  line-height: 1.15;
+}
+
+@mixin d4 {
+  font-size: var(--jm-d4);
+  line-height: 1.2;
+}
+
+// Headings
+@mixin h1 {
+  font-size: var(--jm-h1);
+  line-height: 1.2;
+}
+
+@mixin h2 {
+  font-size: var(--jm-h2);
+  line-height: 1.25;
+}
+
+@mixin h3 {
+  font-size: var(--jm-h3);
+  line-height: 1.3;
+}
+
+@mixin h4 {
+  font-size: var(--jm-h4);
+  line-height: 1.35;
+}
+
+@mixin h5 {
+  font-size: var(--jm-h5);
+  line-height: 1.4;
+}
+
+@mixin h6 {
+  font-size: var(--jm-h6);
+  line-height: 1.4;
+}
+
+// Paragraphs
+@mixin p1 {
+  font-size: var(--jm-p1);
+  line-height: 1.6;
+}
+
+@mixin p2 {
+  font-size: var(--jm-p2);
+  line-height: 1.6;
+}
+
+@mixin p3 {
+  font-size: var(--jm-p3);
+  line-height: 1.5;
+}
+
+@mixin p4 {
+  font-size: var(--jm-p4);
+  line-height: 1.5;
+}
+
+@layer base {
+  body,
+  p {
+    font-family: var(--jm-font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .d1,
+  .d2,
+  .d3,
+  .d4 {
+    font-family: "Work Sans", Arial, sans-serif;
+    font-weight: 700;
+  }
+
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 400;
+  }
+
+  h1 {
+    @include h1;
+  }
+  h2 {
+    @include h2;
+  }
+  h3 {
+    @include h3;
+  }
+  h4 {
+    @include h4;
+  }
+  h5 {
+    @include h5;
+  }
+  h6 {
+    @include h6;
+  }
+
+  p {
+    @include p1;
+  }
+}
+
+@layer utilities {
+  .d1 {
+    @include d1;
+  }
+  .d2 {
+    @include d2;
+  }
+  .d3 {
+    @include d3;
+  }
+  .d4 {
+    @include d4;
+  }
+
+  .h1 {
+    @include h1;
+  }
+  .h2 {
+    @include h2;
+  }
+  .h3 {
+    @include h3;
+  }
+  .h4 {
+    @include h4;
+  }
+  .h5 {
+    @include h5;
+  }
+  .h6 {
+    @include h6;
+  }
+
+  .p1 {
+    @include p1;
+  }
+  .p2 {
+    @include p2;
+  }
+  .p3 {
+    @include p3;
+  }
+  .p4 {
+    @include p4;
+  }
+}

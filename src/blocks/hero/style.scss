@@ -1,7 +1,7 @@
 @use "../../scss/abstracts/index" as *;
 
 .jm-hero {
-  --jm-hero-padding: var(--jm-spacing-6);
+  --jm-hero-padding: var(--jm-spacing-xl);
   --jm-hero-gradient-direction: 180deg;
 
   --jm-hero-overlay: linear-gradient(

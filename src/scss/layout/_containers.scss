@@ -1,0 +1,31 @@
+@layer layout {
+  .site-main,
+  .wp-site-blocks,
+  .wp-block-group.is-layout-constrained,
+  .wp-block-group.is-layout-flow {
+    container-type: inline-size;
+  }
+
+  .jm-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--jm-background-color);
+    color: var(--jm-text-color);
+
+    &__container {
+      display: grid;
+      max-width: var(--jm-container-md);
+      gap: var(--jm-gutter);
+      padding: var(--jm-spacing-xl);
+    }
+
+    &__column {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--jm-gutter); //todo set gap to a variable
+      width: 100%;
+    }
+  }
+}

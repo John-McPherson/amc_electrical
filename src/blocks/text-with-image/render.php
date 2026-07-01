@@ -1,6 +1,6 @@
 <?php
 
-//todo  allow for reading order to be reversed + pallete controls
+//todo  allow for reading order to be reversed + palette controls
 
 
 $args = [
@@ -14,8 +14,8 @@ $args = [
 ?>
 
 <section class="jm-section jm-text-with-image">
-    <div class="jm-text-with-image__container">
-        <div class="column">
+    <div class="jm-section__container">
+        <div class="jm-section__column">
 
             <?php get_template_part(slug: 'template-parts/paragraph', name: null, args: $args['label']); ?>
 

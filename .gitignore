@@ -17,6 +17,9 @@
 /wp-*.php
 /xmlrpc.php
 
+# Ignore Mac system files
+.DS_Store
+
 # Configuration
 wp-config.php
 
@@ -47,7 +50,9 @@ wp-config.php
 # uncomment the next line
 #/wp-content/themes
 
+# Node modules
 node_modules
 
+# Ignore build and dist directories
 /build
 /dist

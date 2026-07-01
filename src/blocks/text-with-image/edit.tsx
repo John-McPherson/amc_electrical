@@ -17,21 +17,23 @@ export default function Edit({ attributes, setAttributes }) {
   return (
     <div {...blockProps}>
       <section className="jm-section jm-text-with-image">
-        <div className="column">
-          <TextInput {...bind.text("label")} tagName="p" className="label" />
+        <div className="jm-section__container">
+          <div className="jm-section__column">
+            <TextInput {...bind.text("label")} tagName="p" className="label" />
 
-          <div className="text-content">
-            <TextInput {...bind.text("heading")} tagName="h2" />
-            <TextInput {...bind.text("text")} />
+            <div className="text-content">
+              <TextInput {...bind.text("heading")} tagName="h2" />
+              <TextInput {...bind.text("text")} />
+            </div>
+
+            <ButtonLink text={bind.text("linkText")} link={bind.link("link")} />
           </div>
 
-          <ButtonLink text={bind.text("linkText")} link={bind.link("link")} />
-        </div>
-
-        <div className="column">
-          <div className="jm-image">
-            {imageUrl && <img src={imageUrl} />}
-            <MediaInput {...bind.media("imageId", "imageUrl")} />
+          <div className="column">
+            <div className="jm-image">
+              {imageUrl && <img src={imageUrl} />}
+              <MediaInput {...bind.media("imageId", "imageUrl")} />
+            </div>
           </div>
         </div>
       </section>

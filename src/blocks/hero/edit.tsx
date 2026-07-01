@@ -30,7 +30,7 @@ export default function Edit({ attributes, setAttributes }) {
   const blockProps = useBlockProps();
   return (
     <div {...blockProps}>
-      <section className="jm-section jm-hero">
+      <section className="jm-section jm-hero jm-palette--inverse">
         <div className="jm-hero__text">
           <TextInput {...bind.text("heading")} tagName="h1" />
           <TextInput {...bind.text("text")} />

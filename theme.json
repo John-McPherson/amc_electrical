@@ -17,8 +17,8 @@
         { "name": "M", "slug": "m", "size": "1rem" },
         { "name": "L", "slug": "l", "size": "1.5rem" },
         { "name": "XL", "slug": "xl", "size": "2rem" },
-        { "name": "2XL", "slug": "2-xl", "size": "2.5rem" },
-        { "name": "3XL", "slug": "3-xl", "size": "3rem" }
+        { "name": "2XL", "slug": "2xl", "size": "2.5rem" },
+        { "name": "3XL", "slug": "3xl", "size": "3rem" }
       ]
     },
 
@@ -31,28 +31,149 @@
         { "name": "M", "slug": "m", "size": "0.5rem" },
         { "name": "L", "slug": "l", "size": "0.75rem" },
         { "name": "XL", "slug": "xl", "size": "1rem" },
-        { "name": "2XL", "slug": "2-xl", "size": "1.5rem" },
+        { "name": "2XL", "slug": "2xl", "size": "1.5rem" },
         { "name": "Full", "slug": "full", "size": "9999px" }
       ]
     },
     "typography": {
+      "fontFamilies": [
+        {
+          "name": "Work Sans",
+          "slug": "display",
+          "fontFamily": "Work Sans",
+          "fontFace": [
+            {
+              "fontFamily": "Work Sans",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "src": ["file:./build/assets/fonts/WorkSans-Regular.woff2"]
+            },
+            {
+              "fontFamily": "Work Sans",
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "src": ["file:./build/assets/fonts/WorkSans-SemiBold.woff2"]
+            },
+            {
+              "fontFamily": "Work Sans",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "src": ["file:./build/assets/fonts/WorkSans-Bold.woff2"]
+            }
+          ]
+        },
+        {
+          "name": "Source Sans 3",
+          "slug": "body",
+          "fontFamily": "Source Sans 3",
+          "fontFace": [
+            {
+              "fontFamily": "Source Sans 3",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "src": ["file:./build/assets/fonts/SourceSans3-Regular.woff2"]
+            },
+            {
+              "fontFamily": "Source Sans 3",
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "src": ["file:./build/assets/fonts/SourceSans3-SemiBold.woff2"]
+            }
+          ]
+        },
+        {
+          "name": "JetBrains Mono",
+          "slug": "mono",
+          "fontFamily": "JetBrains Mono",
+          "fontFace": [
+            {
+              "fontFamily": "JetBrains Mono",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "src": ["file:./build/assets/fonts/JetBrainsMono-Regular.woff2"]
+            },
+            {
+              "fontFamily": "JetBrains Mono",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "src": ["file:./build/assets/fonts/JetBrainsMono-Bold.woff2"]
+            }
+          ]
+        }
+      ],
       "fontSizes": [
-        { "name": "Display 1", "slug": "d1", "size": "2.75rem" },
-        { "name": "Display 2", "slug": "d2", "size": "2.5rem" },
-        { "name": "Display 3", "slug": "d3", "size": "2.25rem" },
-        { "name": "Display 4", "slug": "d4", "size": "2rem" },
+        {
+          "name": "Display 1",
+          "slug": "d1",
+          "size": "clamp(3.5rem, 2.75rem + 3vw, 6rem)"
+        },
+        {
+          "name": "Display 2",
+          "slug": "d2",
+          "size": "clamp(3rem, 2.4rem + 2.5vw, 5rem)"
+        },
+        {
+          "name": "Display 3",
+          "slug": "d3",
+          "size": "clamp(2.5rem, 2rem + 2vw, 4rem)"
+        },
+        {
+          "name": "Display 4",
+          "slug": "d4",
+          "size": "clamp(2.25rem, 1.85rem + 1.5vw, 3.25rem)"
+        },
 
-        { "name": "Heading 1", "slug": "h1", "size": "2rem" },
-        { "name": "Heading 2", "slug": "h2", "size": "1.75rem" },
-        { "name": "Heading 3", "slug": "h3", "size": "1.5rem" },
-        { "name": "Heading 4", "slug": "h4", "size": "1.25rem" },
-        { "name": "Heading 5", "slug": "h5", "size": "1.125rem" },
-        { "name": "Heading 6", "slug": "h6", "size": "1rem" },
+        {
+          "name": "Heading 1",
+          "slug": "h1",
+          "size": "clamp(2.5rem, 2rem + 2vw, 4rem)"
+        },
+        {
+          "name": "Heading 2",
+          "slug": "h2",
+          "size": "clamp(2rem, 1.7rem + 1.5vw, 3rem)"
+        },
+        {
+          "name": "Heading 3",
+          "slug": "h3",
+          "size": "clamp(1.75rem, 1.55rem + 1vw, 2.25rem)"
+        },
+        {
+          "name": "Heading 4",
+          "slug": "h4",
+          "size": "clamp(1.5rem, 1.4rem + 0.5vw, 1.75rem)"
+        },
+        {
+          "name": "Heading 5",
+          "slug": "h5",
+          "size": "clamp(1.25rem, 1.2rem + 0.25vw, 1.5rem)"
+        },
+        {
+          "name": "Heading 6",
+          "slug": "h6",
+          "size": "clamp(1.125rem, 1.1rem + 0.15vw, 1.25rem)"
+        },
 
-        { "name": "Paragraph 1", "slug": "p1", "size": "1.125rem" },
-        { "name": "Paragraph 2", "slug": "p2", "size": "1rem" },
-        { "name": "Paragraph 3", "slug": "p3", "size": "0.875rem" },
-        { "name": "Paragraph 4", "slug": "p4", "size": "0.75rem" }
+        {
+          "name": "Paragraph 1",
+          "slug": "p1",
+          "size": "1.25rem"
+        },
+        {
+          "name": "Paragraph 2",
+          "slug": "p2",
+          "size": "1.125rem"
+        },
+        {
+          "name": "Paragraph 3",
+          "slug": "p3",
+          "size": "1rem"
+        },
+        {
+          "name": "Paragraph 4",
+          "slug": "p4",
+          "size": "0.875rem"
+        }
       ]
     },
     "color": {

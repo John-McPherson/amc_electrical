@@ -13,7 +13,7 @@ add_editor_style('build/css/editor-style.css');
 // register all theme blocks
 add_action('init', function () {
 
-    foreach (glob(get_stylesheet_directory() . '/build/blocks/*') as $block_dir) {
+    foreach (glob(get_stylesheet_directory() . '/build/js/blocks/*') as $block_dir) {
 
         if (file_exists($block_dir . '/block.json')) {
             register_block_type($block_dir);

@@ -1,31 +1,27 @@
 @use "../../scss/abstracts/index" as *;
 
-.jm-text-with-image {
-  @include jm_button();
-  --jm-text-image-padding: var(--jm-spacing-6);
-  --jm-text-image-gap: var(--jm-spacing-6);
-  --jm-text-image-cols: 1;
+@layer blocks {
+  .jm-text-with-image {
+    @include jm_button();
+    --jm-text-image-padding: var(--jm-spacing-xl);
+    --jm-text-image-gap: var(--jm-spacing-xl);
+    --jm-text-image-cols: 1;
 
-  &__container {
-    display: grid;
-    justify-items: center;
-    max-width: var(--jm-container-md);
+    .jm-section__container {
+      grid-template-columns: repeat(var(--jm-text-image-cols), 1fr);
+    }
 
-    grid-template-columns: repeat(var(--jm-text-image-cols), 1fr);
-    padding: var(--jm-text-image-padding);
-    gap: var(--jm-text-image-gap);
-  }
+    &__text {
+      display: flex;
+      flex-direction: column;
+    }
 
-  &__text {
-    display: flex;
-    flex-direction: column;
-  }
+    &__image {
+      border-radius: var(--jm-radius-md);
+    }
 
-  &__image {
-    border-radius: var(--jm-radius-md);
-  }
-
-  @include min($mobile) {
-    --jm-text-image-cols: 2;
+    @include min($mobile) {
+      --jm-text-image-cols: 2;
+    }
   }
 }
